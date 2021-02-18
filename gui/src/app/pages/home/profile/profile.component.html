@@ -1,0 +1,110 @@
+<img src="{{ _api.url_asset+user.banner }}" onerror="this.src='../../../assets/img/banner.jpg'" class="banner" alt="" />
+<div class="container">
+  <div class="profile">
+    <img [routerLink]="['/profile/'+user.id]" class="link avatar" onerror="this.src='../../../assets/img/user.jpg'" src="{{ _api.url_asset+user.profile }}" alt="logo" />
+    <div class="profile-name-subs">
+      <p [routerLink]="['/profile/'+user.id]" class="link">{{ user.name }}</p>
+      <small>{{ subs }} seguidores</small>
+    </div>
+    <div class="mx-auto"></div>
+    <button *ngIf="state == 1" class="subscribe" (click)="subscribe(user.id)" mat-flat-button color="warn">
+      Seguir
+    </button>
+
+    <button *ngIf="state == 2" class="subscribe" (click)="desubscribe(user.id)" mat-flat-button color="accent">
+      No seguir
+    </button>
+  </div>
+  <div class="tab">
+  <mat-tab-group animationDuration="350ms">
+      <mat-tab label="Entradas">
+        <mat-card-content>
+          <div class="d-flex mt-3" *ngFor="let post of posts ; index as i">
+            <div class="content">
+              <img class="link" onerror="this.src='../../../assets/img/thumbnail.jpg'" src="{{ _api.url_asset+post.img }}"
+                [routerLink]="['/read/'+post.id]" alt="" />
+              
+            </div>
+            <div class="side-content pl-2">
+              <p class="mainlink" [routerLink]="['/read/'+post.id]">{{ post.title }}</p>
+              <p [routerLink]="['/profile/'+post.id_user]" class="profile link">{{ post.name }} </p>
+              <mat-icon *ngIf="state == 0" [routerLink]="['/upload/'+post.id]" class="link txt-warning">edit</mat-icon>
+              <mat-icon *ngIf="state == 0" (click)="delete(post.id,i)" class="link txt-danger">delete</mat-icon>
+              <p class="profile">
+                {{ post.views }} visitas.
+                <span class="ml-1">{{ post.date | date:'mediumDate' }}</span>
+              </p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-tab>
+     
+        
+          <mat-tab label="Mensajes">
+            <mat-card-content>
+              <div class="d-flex mt-3" *ngFor="let msg of messages">
+                <div class="side-content pl-2">
+                  <p class="link-title">{{ msg.name }} <mat-icon  (click)="delete_msg(msg.id,i)" class="link txt-danger">delete</mat-icon></p>
+                  <a href="mailto:{{ msg.email }}">{{ msg.email }}</a>
+                  <p>{{ msg.content }}</p>
+                  
+                </div>
+                <mat-divider></mat-divider>          
+              </div>
+            </mat-card-content>
+          </mat-tab>
+      <mat-tab label="Seguidos">
+        <mat-card-content>
+          <div class="d-flex mt-3" *ngFor="let user of subscriptions">
+            <div class="content">
+              <img class="link-circle" onerror="this.src='../../../assets/img/user.jpg'" src="{{ _api.url_asset+user.profile }}"
+                [routerLink]="['/profile/'+user.id]" alt="" />
+            </div>
+            <div class="side-content pl-2">
+              <p [routerLink]="['/profile/'+user.id]" class="link-title">{{ user.name }}</p>
+            </div>
+            <button class="subscribe right" (click)="desubscribe_reload(user.id)" mat-flat-button color="accent">
+              No seguir
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-tab>
+      <mat-tab *ngIf="state == 0" label="Información">
+        <mat-card-content>
+          <form action="#" #fu="ngForm" (ngSubmit)="UserSubmit(fu)">
+            <mat-form-field>
+
+              <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5"
+                placeholder="Biografia" name="bio" value="{{ user.bio }}" ngModel #bio="ngModel"></textarea>
+              <mat-icon matSuffix>edit</mat-icon>
+              <mat-error *ngIf="bio.invalid">
+                Biografia requerida
+              </mat-error>
+            </mat-form-field>
+
+
+            <input (change)="BannerChange($event)" class="ng-hide" id="banner" name="banner" type="file"
+              accept="image/*" />
+            <label for="banner" class="file-button">
+              <mat-icon>photo_size_select_actual</mat-icon> Subir Banner: <span id="size"></span>
+            </label>
+            <input (change)="ProfileChange($event)" class="ng-hide" id="profile" name="profile" type="file"
+              accept="image/*" />
+            <label for="profile" class="file-button">
+              <mat-icon>image</mat-icon> Subir Foto: <span id="size2"></span>
+            </label>
+            <button mat-raised-button color="primary" class="auth-button">
+              Actualizar
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+<ngx-spinner
+  bdColor="rgba(0,0,0,0.5)"
+  size="large"
+  color="#fff"
+  type="pacman"
+></ngx-spinner>

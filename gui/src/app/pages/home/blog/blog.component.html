@@ -1,0 +1,39 @@
+<div class="row no-gutters">
+  <div class="col-12">
+    <h1 class="recommended">{{ title }}</h1>
+  </div>
+
+  <div class="card col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 justify-content-left d-flex"
+    style="margin-bottom: 10px; cursor: pointer;" *ngFor="let post of posts">
+    <div>
+      <div [routerLink]="['/read/'+post.id]" class="img-container">
+        <img onerror="this.src='../../../assets/img/thumbnail.jpg'" class="card-image" src="{{ _api.url_asset+post.img }}"
+          alt="Thumbnail" />
+        
+        <div class="later-div">Ver despues</div>
+      </div>
+      <div class="card-content">
+        <div class="d-flex mt-2">
+          <img alt="User" onerror="this.src='../../../assets/img/user.jpg'" [routerLink]="['/profile/'+post.id_user]"
+            class="avatar" src="{{ _api.url_asset+post.profile }}" />
+          <p [routerLink]="['/read/'+post.id]" class="text">
+            {{ post.title | slice: 0:70 }}
+          </p>
+          <div style="flex-grow: 1;"></div>
+          <mat-icon class="more-icon">more_vert</mat-icon>
+        </div>
+        <p [routerLink]="['/profile/'+post.id_user]" class="title">
+          {{ post.name }}
+          
+        </p>
+        <p class="sub-title">{{ post.views }} visitas, {{ post.date | date:'mediumDate' }} </p>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-spinner
+  bdColor="rgba(0,0,0,0.5)"
+  size="large"
+  color="#fff"
+  type="pacman"
+></ngx-spinner>

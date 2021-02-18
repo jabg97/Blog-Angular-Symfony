@@ -1,0 +1,86 @@
+<img src="{{ _api.url_asset+user.banner }}" onerror="this.src='../../../assets/img/banner.jpg'" class="banner" alt="" />
+<div class="container">
+  <div class="profile">
+    <img [routerLink]="['/profile/'+user.id]" class="avatar link" onerror="this.src='../../../assets/img/user.jpg'" src="{{ _api.url_asset+user.profile }}" alt="logo" />
+    <div class="profile-name-subs">
+      <p [routerLink]="['/profile/'+user.id]" class="link">{{ user.name }}</p>
+      <small>{{ subs }} seguidores</small>
+    </div>
+    <div class="mx-auto"></div>
+
+  </div>
+  <div class="tab">
+    <mat-tab-group animationDuration="350ms">
+      <mat-tab label="Editar Entrada" *ngIf="id && edit">
+        <mat-card-content>
+          <form action="#" #fu="ngForm" (ngSubmit)="UpdateSubmit(fu)">
+            <mat-form-field>
+              <input value="{{ edit.title }}" matInput placeholder="Titulo" name="title" ngModel #title="ngModel" />
+              <mat-icon matSuffix>edit</mat-icon>
+              <mat-error *ngIf="title.invalid">
+                Titulo requerido
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <textarea value="{{ edit.content }}" matInput cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5"
+                placeholder="Contenido" name="content" ngModel #content="ngModel"></textarea>
+              <mat-icon matSuffix>edit</mat-icon>
+              <mat-error *ngIf="content.invalid">
+                Contenido requerido
+              </mat-error>
+            </mat-form-field>
+
+
+            <input (change)="ImgChange($event)" class="ng-hide" id="img" name="img" type="file"
+              accept="image/*" />
+            <label for="img" class="file-button">
+              <mat-icon>image</mat-icon> Subir Imagen: <span id="size"></span>
+            </label>
+
+            <button mat-raised-button color="primary" class="auth-button">
+              Editar
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-tab>
+      <mat-tab label="Subir Entrada" *ngIf="!id || !edit">
+        <mat-card-content>
+          <form action="#" #fu="ngForm" (ngSubmit)="UploadSubmit(fu)">
+            <mat-form-field>
+              <input matInput placeholder="Titulo" name="title" ngModel #title="ngModel" required/>
+              <mat-icon matSuffix>edit</mat-icon>
+              <mat-error *ngIf="title.invalid">
+                Titulo requerido
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="5" required
+                placeholder="Contenido" name="content" ngModel #content="ngModel"></textarea>
+              <mat-icon matSuffix>edit</mat-icon>
+              <mat-error *ngIf="content.invalid">
+                Contenido requerido
+              </mat-error>
+            </mat-form-field>
+
+           
+            <input (change)="ImgChange($event)" class="ng-hide" id="img" name="img" type="file" required
+              accept="image/*" />
+            <label for="img" class="file-button">
+              <mat-icon>image</mat-icon> Subir Imagen: <span id="size"></span>
+            </label>
+
+            <button mat-raised-button color="primary" class="auth-button">
+              Publicar
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+<ngx-spinner
+  bdColor="rgba(0,0,0,0.5)"
+  size="large"
+  color="#fff"
+  type="pacman"
+></ngx-spinner>

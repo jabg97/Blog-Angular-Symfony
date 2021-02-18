@@ -1,0 +1,99 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin-left: 30px;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-option-img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+[dir="rtl"] .example-option-img {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+input[type="text"],
+input[type="search"],
+select {
+  width: 40%;
+  outline: none;
+  height: 30px;
+  display: inline-block;
+  border: 0px solid #aaaaaa;
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 3px #acacac;
+  font-family: sans-serif;
+}
+
+.icon {
+  padding: 3px;
+  padding-bottom: 15px;
+  width: 70px;
+  height: 30px;
+  /* border-radius: 0px 10px 10px 0px; */
+  background-color: rgb(0, 0, 0);
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  min-width: 50px;
+  text-align: center;
+  box-shadow: 0px 0px 3px rgb(224, 219, 219);
+}
+
+.icon:hover {
+  color: rgb(236, 26, 26);
+}
+
+.icon::selection {
+  color: none;
+  background: none;
+}
+
+p::selection {
+  color: none;
+  background: none;
+}
+
+p {
+  cursor: default;
+}
+
+span {
+  cursor: default;
+}
+
+span::selection {
+  color: none;
+  background: none;
+}
+
+.search {
+  display: relative;
+  width: 5000px;
+  z-index: 50;
+}
+
+::ng-deep.mat-menu-panel {
+  max-width: unset !important;
+}
+
+.login-btn{
+  cursor: pointer;
+width: 120px;
+}
+
+.txt-btn{
+  cursor: pointer;
+width: 80px;
+}

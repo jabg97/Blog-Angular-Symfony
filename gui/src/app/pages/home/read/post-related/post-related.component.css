@@ -1,0 +1,52 @@
+p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.post {
+  font-size: 13px;
+  font-weight: 400;
+  color: #606060;
+  line-height: 1rem;
+}
+
+.side-content p:nth-child(2) {
+  margin-top: 5px;
+}
+
+img {
+  width: 180px;
+  height: 100px;
+}
+
+.content {
+  position: relative;
+}
+
+.time {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 12px;
+  background-color: black;
+  border-radius: 2px;
+  color: white;
+  padding: 3px;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.mainlink {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.card {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2) !important;
+  transition: 300ms;
+}
+.card:hover  {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3)!important;
+  }

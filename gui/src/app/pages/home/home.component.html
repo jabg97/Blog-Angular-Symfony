@@ -1,0 +1,11 @@
+<div class="nav-container">
+  <app-app-bar></app-app-bar>
+  <mat-sidenav-container class="mat-sidenav-container" autosize>
+
+    <mat-sidenav-content [@onMainContentChange]="'null'">
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

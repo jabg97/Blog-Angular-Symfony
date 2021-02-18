@@ -1,0 +1,207 @@
+@font-face {
+  font-family: roboto-black;
+  src: url("../../../../assets/font/Roboto-Black.ttf");
+}
+
+.card {
+  padding: 20px;
+  margin-top: 20px;
+
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  transition: 300ms;
+}
+.card:hover  {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  }
+
+.card-image {
+  width: 100%;
+  height: 150px !important;
+  padding: 0px;
+  margin: 0px;
+}
+
+.card-content {
+  padding: 0px;
+  margin: 0px;
+}
+
+.avatar {
+  height: 31px;
+  width: 30px;
+  margin-left: 2px;
+  border-radius: 50%;
+}
+
+.text {
+  margin-top: -2px;
+  margin-left: 10px;
+  letter-spacing: 0px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: roboto-black;
+}
+
+.recommended {
+  color: #303f9f;
+  text-align: center;
+}
+
+.title {
+  margin-left: 2.7em;
+  margin-top: -10px;
+  letter-spacing: 0px;
+  font-size: 15px;
+}
+
+.title:hover {
+  color: rgb(126, 112, 112);
+}
+
+.sub-title {
+  margin-left: 2.7em;
+  margin-top: -16px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  font-size: 15px;
+  cursor: default;
+}
+
+.check {
+  background-color: rgba(167, 145, 145, 0.671);
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  cursor: default;
+}
+
+.check::selection {
+  background: none;
+  color: none;
+}
+
+.time {
+  position: absolute;
+  bottom: 0px;
+  right: 12px;
+  background-color: black;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 0px 3px;
+  letter-spacing: 0px;
+  border-radius: 2px;
+}
+
+.img-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.watch-later {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 20px;
+  z-index: 1;
+  background-color: black;
+  text-align: center;
+  visibility: hidden;
+}
+
+.add-playlist {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 33px;
+  right: 5px;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 20px;
+  background-color: black;
+  text-align: center;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.card:hover .add-playlist {
+  visibility: visible;
+}
+
+.card:hover .watch-later {
+  visibility: visible;
+}
+
+.playlist-queue {
+  background-color: transparent;
+  position: absolute;
+  color: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px;
+  right: 30px;
+  top: 33px;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 3px;
+  transition: all 300ms;
+  transform: translate(20px);
+}
+
+.later-div {
+  background-color: transparent;
+  color: transparent;
+  position: absolute;
+  font-weight: 500;
+  font-size: 13px;
+  padding: 4px;
+  right: 30px;
+  top: 5px;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 3px;
+  transition: all 300ms;
+  transform: translate(20px);
+}
+
+.add-playlist:hover~.playlist-queue,
+.playlist-queue:hover {
+  visibility: visible;
+  opacity: 1;
+  color: white;
+  background-color: black;
+  transform: translate(0px);
+}
+
+.watch-later:hover~.later-div,
+.later-div:hover {
+  visibility: visible;
+  opacity: 1;
+  color: white;
+  background-color: black;
+  transform: translate(0px);
+}
+
+.more-icon {
+  visibility: hidden;
+}
+
+.more-icon:hover {
+  color: rgb(121, 116, 116);
+}
+
+.card:hover .more-icon {
+  visibility: visible;
+}

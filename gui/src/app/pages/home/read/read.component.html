@@ -1,0 +1,108 @@
+<div class="containers">
+  <div class="row mt-4">
+    <div class="col-lg-8 col-md-6 col-sm-12">
+     
+      <div class="bottom">
+        <h1 class="title">
+          {{ post.title }}
+        </h1>
+        
+          <div style="text-align: center;">
+         <img class="img-read" onerror="this.src='../../../assets/img/thumbnail.jpg'" src="{{ _api.url_asset+post.img }}"
+          alt="" /> 
+          <mat-divider></mat-divider>
+        </div>
+        <div class="description">
+          {{ post.content }}
+        </div>
+        <mat-divider></mat-divider>
+        <div class="d-flex">
+          <p class="views">{{ post.views }} visitas • {{ post.date | date:'mediumDate' }}</p>
+          <div style="flex-grow: 1;"></div>
+          <div class="like-dislike">
+            <button mat-icon-button (click)="like(post.id)">
+              <mat-icon class="txt-success">thumb_up</mat-icon>
+            </button>
+            <span class="txt-success">{{ post.likes }}</span>
+            <button mat-icon-button (click)="dislike(post.id)">
+              <mat-icon class="txt-danger">thumb_down</mat-icon>
+            </button>
+            <span class="txt-danger">{{ post.dislikes }}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="mt-3">
+          <div class="d-flex">
+            <img class="link" [routerLink]="['/profile/'+post.id_user]" class="avatar link" alt="User"
+              onerror="this.src='../../../assets/img/user.jpg'" src="{{ _api.url_asset+post.profile }}" alt="" />
+            <div id="profile" style="display: flex; flex-direction: column;">
+              <span class="link" [routerLink]="['/profile/'+post.id_user]">{{ post.name }}</span>
+              <p>{{ subs }} seguidores</p>
+            </div>
+            <div style="flex-grow: 1;"></div>
+            <div *ngIf="is_auth">
+            <button *ngIf="state == 1" class="subscribe" (click)="subscribe(post.id_user)" mat-flat-button
+              color="warn">
+              Seguir
+            </button>
+
+            <button *ngIf="state == 2" class="subscribe" (click)="desubscribe(post.id_user)" mat-flat-button
+              color="accent">
+              No seguir
+            </button>
+          </div>
+          </div>
+          <mat-divider class="comment-divider"></mat-divider>
+          
+          <span>{{ comments_count }} Comentarios</span>
+        </div>
+
+        <div *ngIf="is_auth" class="mt-3 d-flex">
+          <img [routerLink]="['/profile/'+user.id]" class="avatar-sm link" onerror="this.src='../../../assets/img/user.jpg'" src="{{ _api.url_asset+user.profile }}" alt="" />
+          <form class="w-100" #fc="ngForm" (ngSubmit)="CommentSubmit(fc)">
+            <mat-form-field class="w-100 ml-3" style="font-size: 13px; color: black;" floatLabel="never">
+              <mat-label>Añadir un comentario publico...</mat-label>
+              <input matInput name="comment_text" ngModel #comment_text="ngModel" />
+            </mat-form-field>
+            <div class="comment-btn-group">
+              <button mat-flat-button color="primary" class="submit ml-1">
+                Comentar
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="mt-4 d-flex" *ngFor="let comment of comments ; index as i">
+          <img [routerLink]="['/profile/'+comment.id_user]" class="avatar-sm link" alt="User"
+            onerror="this.src='../../../assets/img/user.jpg'" src="{{ _api.url_asset+comment.profile }}" alt="" />
+          <div class="d-flex flex-column">
+            <p class="name"><strong class="link"
+                [routerLink]="['/profile/'+comment.id_user]">{{ comment.name }}</strong> • {{ comment.date | date:'mediumDate' }}</p>
+            <p class="pin-comment">
+              {{ comment.content }}
+            </p>
+            <div class="d-flex mt-1 comment-like">
+              <button mat-icon-button (click)="comment_like(comment.id,i)">
+                <mat-icon class="txt-success">thumb_up</mat-icon>
+              </button>
+              <p class="txt-success">{{ comment.likes }}</p>
+              <button mat-icon-button (click)="comment_dislike(comment.id,i)">
+                <mat-icon class="txt-danger">thumb_down</mat-icon>
+              </button>
+              <p class="txt-danger">{{ comment.dislikes }}</p>
+              <button *ngIf="comment.id_user == user.id" mat-icon-button (click)="comment_dislike(comment.id,i)">
+                <mat-icon (click)="delete(comment.id,i)" class="txt-gray">delete</mat-icon>
+              </button>
+              <p *ngIf="comment.id_user == user.id" (click)="delete(comment.id,i)" class="txt-gray link">Eliminar</p>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12 side">
+      <app-post-related [later]=later [url_asset]=_api.url_asset [posts]=posts></app-post-related>
+    </div>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(0,0,0,0.5)" size="large" color="#fff" type="pacman"></ngx-spinner>

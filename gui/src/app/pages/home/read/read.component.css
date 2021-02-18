@@ -1,0 +1,306 @@
+.bottom {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.img-read {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 50%;
+  height: 50%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  transition: 300ms;
+}
+
+/* Add a hover effect (blue shadow) */
+.img-read:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 140, 186, 0.5);
+
+}
+.containers {
+  width: 90% !important;
+  margin: auto;
+}
+
+.post {
+  max-width: 100%;
+  max-height: 100%;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+}
+
+.side {
+  font-weight: 500;
+  font-size: 14px;
+  padding-right: 20px;
+}
+
+p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.profile {
+  font-size: 13px;
+  font-weight: 400;
+  color: #606060;
+}
+
+.volume-slider {
+  display: none;
+}
+
+.volume:hover~.volume-slider,
+.volume-slider:hover {
+  display: flex;
+}
+
+.progress-bar,
+.buffer-bar {
+  height: 3px;
+}
+
+.tag {
+  margin-top: 12px;
+  color: #3ea6ff;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.title {
+  color: #303f9f;
+  text-align: center;
+}
+
+.views {
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  line-height: 21px;
+  margin-top: 10px;
+}
+
+mat-divider {
+  margin-top: 0px;
+}
+
+.like-dislike {
+  border-bottom: 3px solid black;
+}
+
+span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.share {
+  margin-top: 14px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.avatar {
+  height: 51px;
+  width: 50px;
+  margin-left: 2px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-sm {
+  height: 45px;
+  width: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#profile {
+  margin-left: 10px;
+  justify-content: center;
+}
+
+#profile span {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+#profile p {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.subscribe {
+  height: fit-content !important;
+  border-radius: 2px !important;
+  line-height: 20px !important;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px 14px !important;
+}
+
+.description {
+  text-align: center !important;
+  padding: 40px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.description-text {
+  text-align: justify;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #030300;
+  font-style: normal;
+  margin-top: 10px;
+}
+
+.show-less {
+  cursor: pointer;
+  margin-top: 20px;
+  color: #030300;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.comment-divider {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.sort-btn {
+  margin-left: 10px !important;
+  padding: 4px 8px !important;
+  height: fit-content !important;
+  line-height: unset !important;
+}
+
+.example-full-width {
+  width: 100%;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.comment-btn-group {
+  margin-top: -10px;
+  float: right;
+  padding: 0px !important;
+}
+
+.submit {
+  border-radius: 2px;
+  width: fit-content !important;
+  height: fit-content !important;
+  line-height: unset !important;
+  border-radius: 1px !important;
+  padding: 10px 14px !important;
+}
+
+.pin {
+  font-size: 13px !important;
+  height: fit-content !important;
+  font-weight: 400;
+  line-height: 18px;
+  color: #606060;
+}
+
+.pin mat-icon {
+  font-size: 13px !important;
+  width: fit-content !important;
+  font-weight: 400;
+  color: #606060;
+  vertical-align: middle;
+  position: relative;
+}
+
+.chip span {
+  background-color: grey;
+  color: white;
+  padding: 2px 4px;
+  border-radius: 10px;
+  margin-left: 18px;
+  font-weight: 400;
+}
+
+.chip span mat-icon {
+  height: fit-content !important;
+  width: fit-content !important;
+  font-size: 10px;
+  color: black;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 2px;
+  padding: 1px;
+  font-weight: 600;
+}
+
+.chip p {
+  font-size: 13px;
+  font-weight: 400;
+  color: #030303;
+  margin-left: 5px;
+  margin-top: 2px;
+}
+
+.pin-comment {
+  margin-top: 5px;
+  margin-left: 17px;
+  max-width: 500px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.comment-like>button {
+  width: fit-content !important;
+  height: fit-content !important;
+  line-height: unset !important;
+  margin-left: 12px;
+  padding: 0px !important;
+}
+
+.comment-like button mat-icon {
+  font-size: 16px;
+}
+
+.comment-like p {
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.comment-like span {
+  font-size: 13px;
+  margin-left: 10px;
+  margin-top: 3px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.view-replies-btn {
+  width: fit-content !important;
+  height: fit-content !important;
+  line-height: unset !important;
+  margin-left: 9px;
+  padding: 0px !important;
+  padding-right: 5px !important;
+  color: blue;
+  margin-top: 5px;
+}
+
+strong {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.name {
+  font-size: 13px;
+  margin-left: 18px;
+}
+
+.link {
+  cursor: pointer;
+}

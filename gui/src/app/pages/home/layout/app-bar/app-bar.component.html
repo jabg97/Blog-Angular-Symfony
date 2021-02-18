@@ -1,0 +1,64 @@
+<mat-toolbar color="primary" class="example-toolbar" *ngIf="visible || !BP.isXS">
+ 
+  <img [routerLink]="['']" class="ml-lg-3 h-50 mr-1 link" src="../../../assets/logo.png" alt="" />
+  <p [routerLink]="['']" class="link"></p>
+  <span [routerLink]="['']" matBadge="V2" matBadgeColor="primary" matBadgeSize="small" matBadgeOverlap="false"
+    class="mb-3 mr-3 link"></span>
+
+    <button class="txt-btn"  [routerLink]="['/']" mat-icon-button>
+      <span>Home</span>
+    </button>
+    <button class="txt-btn"  [routerLink]="['/blog']" mat-icon-button>
+      <span>Blog</span>
+    </button>
+    <button class="txt-btn"  [routerLink]="['/contact']" mat-icon-button>
+      <span>Contacto</span>
+    </button>
+  <div class="w-100 d-flex justify-content-center" *ngIf="!BP.isSM && !BP.isXS">
+    <input value="{{ query }}" [(ngModel)]="query" class="p-2"  type="search"
+      placeholder="Buscar" />
+    <mat-icon class="icon" (click)="search()">search</mat-icon>
+  </div>
+
+  <div class="ml-auto">
+    <button class="search-btn" mat-icon-button (click)="open()" *ngIf="BP.isSM || BP.isXS">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <button class="login-btn" *ngIf="!is_auth" [routerLink]="['/auth']" mat-icon-button>
+      <span>Login / Registrarse</span>
+    </button>
+
+
+
+    <button *ngIf="is_auth" mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-toolbar color="primary" *ngIf="!visible && BP.isXS">
+  <div class="w-100 d-flex justify-content-center">
+    <button mat-icon-button (click)="open()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <input class="p-2 mt-1 w-100" type="text" placeholder="Search" />
+    <mat-icon class="icon mt-1">search</mat-icon>
+  </div>
+</mat-toolbar>
+
+<mat-menu  #menu="matMenu" class="menu">
+ 
+  <button [routerLink]="['/profile']" mat-menu-item>
+    <mat-icon>account_box_icon</mat-icon>
+    <span>Mi Perfil</span>
+  </button> 
+  <button [routerLink]="['/upload']" mat-menu-item>
+    <mat-icon>video_call</mat-icon>
+    <span>Crear Entrada</span>
+  </button>
+  <button (click)="logout()" mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Cerrar Sesión</span>
+  </button>
+</mat-menu>
