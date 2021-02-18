@@ -25,7 +25,6 @@ import {
 export class UploadComponent implements OnInit {
 
   public img: File;
-  public video: File;
   user: any;
   edit: any;
   subs: any;
