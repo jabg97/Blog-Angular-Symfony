@@ -65,6 +65,7 @@ export class UploadComponent implements OnInit {
       formData.append("id", this.id);
       formData.append("user_id", this._api.getUser);
       formData.append("title", fu.value.title);
+      formData.append("subtitle", fu.value.subtitle);
       formData.append("content", fu.value.content);
       formData.append("img", this.img);
       if (this.img) {
@@ -103,6 +104,7 @@ export class UploadComponent implements OnInit {
       formData.append("id", this.id);
       formData.append("user_id", this._api.getUser);
       formData.append("title", fu.value.title);
+      formData.append("subtitle", fu.value.subtitle);
       formData.append("content", fu.value.content);
       formData.append("img", this.img);
  

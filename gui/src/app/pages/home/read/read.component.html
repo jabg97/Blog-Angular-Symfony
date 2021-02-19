@@ -4,8 +4,10 @@
      
       <div class="bottom">
         <h1 class="title">
-          {{ post.title }}
+          {{ post.title }}  
+          <mat-icon *ngIf="state == 0" [routerLink]="['/upload/'+post.id]" class="link txt-warning">edit</mat-icon>
         </h1>
+        <h4> {{ post.subtitle }} </h4>
         
           <div style="text-align: center;">
          <img class="img-read" onerror="this.src='../../../assets/img/thumbnail.jpg'" src="{{ _api.url_asset+post.img }}"
@@ -17,6 +19,7 @@
         </div>
         <mat-divider></mat-divider>
         <div class="d-flex">
+         
           <p class="views">{{ post.views }} visitas • {{ post.date | date:'mediumDate' }}</p>
           <div style="flex-grow: 1;"></div>
           <div class="like-dislike">

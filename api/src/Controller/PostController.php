@@ -39,6 +39,34 @@ class PostController extends AbstractController
         return $response;
     }
 
+    /**
+     * @Route("/post/query", name="query")
+     */
+    public function query(Request $request): Response
+    {
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+        try {
+            $form = json_decode($request->getContent(), true);
+            $conn = $this->getDoctrine()->getManager()
+                ->getConnection();
+
+            $sql = "
+            SELECT p.*, u.name, u.profile FROM posts p INNER JOIN users u ON u.id = p.id_user 
+            WHERE lower(p.title) like :query ORDER BY p.date DESC";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(array('query'=>'%'.strtolower($form['query']).'%' ));
+            $posts = $stmt->fetchAll();
+
+            $data = ["status" => 200, "posts" => $posts];
+
+        } catch (Throwable $e) {
+            $data = ['status' => 500, 'message' => $e->getMessage() . "."];
+        }
+        $response->setContent(json_encode($data));
+        return $response;
+    }
+
   /**
      * @Route("/post/delete", name="post.delete")
      */
@@ -252,6 +280,11 @@ class PostController extends AbstractController
                 $post->setTitle($title);
             }
 
+            $subtitle = $request->get('subtitle');
+            if ($subtitle) {
+                $post->setSubtitle($subtitle);
+            }
+
             $content = $request->get('content');
             if ($content) {
                 $post->setContent($content);
@@ -304,6 +337,11 @@ class PostController extends AbstractController
             $title = $request->get('title');
             if ($title) {
                 $post->setTitle($title);
+            }
+
+            $subtitle = $request->get('subtitle');
+            if ($subtitle) {
+                $post->setSubtitle($subtitle);
             }
 
             $content = $request->get('content');

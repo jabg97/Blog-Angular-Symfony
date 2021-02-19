@@ -63,6 +63,11 @@ class Posts
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $subtitle;
+
     public function getUser(): ?User
     {
         return $this->user;
@@ -160,6 +165,18 @@ class Posts
     public function setViews(string $views): self
     {
         $this->views = $views;
+
+        return $this;
+    }
+
+    public function getSubtitle(): ?string
+    {
+        return $this->subtitle;
+    }
+
+    public function setSubtitle(?string $subtitle): self
+    {
+        $this->subtitle = $subtitle;
 
         return $this;
     }
